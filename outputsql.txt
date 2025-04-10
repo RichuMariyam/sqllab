@@ -1,0 +1,368 @@
+Microsoft Windows [Version 10.0.19045.5608]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\WINDOWS\system32>SQLPLUS
+
+SQL*Plus: Release 10.2.0.1.0 - Production on Thu Apr 10 13:34:12 2025
+
+Copyright (c) 1982, 2005, Oracle.  All rights reserved.
+
+Enter user-name: SYSTEM
+Enter password:
+
+Connected to:
+Oracle Database 10g Express Edition Release 10.2.0.1.0 - Production
+
+SQL> SET SERVEROUTPUT ON
+SQL> ED PRG2.SQL
+
+SQL> @PRG2
+  9  /
+Enter value for a: 10
+old   2: A NUMBER:=&A;
+new   2: A NUMBER:=10;
+Enter value for b: 20
+old   3: B NUMBER:=&B;
+new   3: B NUMBER:=20;
+Sum IS30
+
+PL/SQL procedure successfully completed.
+
+SQL> ED PRG3.SQL
+
+SQL> @PRG3.SQL
+  8* END;NUMBER:=&A
+SP2-0734: unknown command beginning "B NUMBER:=..." - rest of line ignored.
+  8  /
+IF A>B THEN
+   *
+ERROR at line 2:
+ORA-06550: line 2, column 4:
+PLS-00201: identifier 'A' must be declared
+ORA-06550: line 2, column 1:
+PL/SQL: Statement ignored
+
+
+SQL> @PRG3.SQL
+  2* IF A>B THENNUMBER:=&A
+SP2-0734: unknown command beginning "B NUMBER:=..." - rest of line ignored.
+  8  /
+IF A>B THEN
+   *
+ERROR at line 2:
+ORA-06550: line 2, column 4:
+PLS-00201: identifier 'A' must be declared
+ORA-06550: line 2, column 1:
+PL/SQL: Statement ignored
+
+
+SQL> ED PRG3.SQL
+
+SQL> @PRG3.SQL
+ 11  /
+Enter value for a: 10
+old   2:  A NUMBER:=&A;
+new   2:  A NUMBER:=10;
+Enter value for b: 20
+old   3:  B NUMBER:=&B;
+new   3:  B NUMBER:=20;
+20IS GREATER
+
+PL/SQL procedure successfully completed.
+
+SQL> E
+SP2-0042: unknown command "E" - rest of line ignored.
+SQL> Ed PRG4.SQL
+
+SQL> @PRG4.SQL
+ 14  /
+Enter value for a: 20
+old   2:  A NUMBER:=&A;
+new   2:  A NUMBER:=20;
+Enter value for b: 30
+old   3:  B NUMBER:=&B;
+new   3:  B NUMBER:=30;
+Enter value for c: 40
+old   4:  C NUMBER:=&C;
+new   4:  C NUMBER:=40;
+ELSEIF B>A AND B>C THEN
+       *
+ERROR at line 8:
+ORA-06550: line 8, column 8:
+PLS-00103: Encountered the symbol "B" when expecting one of the following:
+:= . ( @ % ;
+
+
+SQL> Ed PRG4.SQL
+
+SQL> @PRG4.SQL
+ 14  /
+Enter value for a: 10
+old   2:  A NUMBER:=&A;
+new   2:  A NUMBER:=10;
+Enter value for b: 20
+old   3:  B NUMBER:=&B;
+new   3:  B NUMBER:=20;
+Enter value for c: 30
+old   4:  C NUMBER:=&C;
+new   4:  C NUMBER:=30;
+END;
+   *
+ERROR at line 13:
+ORA-06550: line 13, column 4:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+if
+
+
+SQL> Ed PRG4.SQL
+
+SQL> @PRG4.SQL
+ 14  /
+Enter value for a: 10
+old   2:  A NUMBER:=&A;
+new   2:  A NUMBER:=10;
+Enter value for b: 20
+old   3:  B NUMBER:=&B;
+new   3:  B NUMBER:=20;
+Enter value for c: 30
+old   4:  C NUMBER:=&C;
+new   4:  C NUMBER:=30;
+ELSEIF B > A AND B > C THEN
+       *
+ERROR at line 8:
+ORA-06550: line 8, column 8:
+PLS-00103: Encountered the symbol "B" when expecting one of the following:
+:= . ( @ % ;
+
+
+SQL> Ed PRG4.SQL
+
+SQL> @PRG4.SQL
+ 14  /
+Enter value for a: 10
+old   2:     A NUMBER := &A;
+new   2:     A NUMBER := 10;
+Enter value for b: 20
+old   3:     B NUMBER := &B;
+new   3:     B NUMBER := 20;
+Enter value for c: 30
+old   4:     C NUMBER := &C;
+new   4:     C NUMBER := 30;
+30 is the biggest number
+
+PL/SQL procedure successfully completed.
+
+SQL> Ed PRG4.SQL
+
+SQL> Ed PRG5.SQL
+
+SQL> @PRG5.SQL
+ 10  /
+Enter value for x: 9
+old   2:   X CHAR(1):='&X';
+new   2:   X CHAR(1):='9';
+9IS NOT A VOWEL CHARACTER
+
+PL/SQL procedure successfully completed.
+
+SQL> @PRG5.SQL
+ 10  /
+Enter value for x: Y
+old   2:   X CHAR(1):='&X';
+new   2:   X CHAR(1):='Y';
+YIS NOT A VOWEL CHARACTER
+
+PL/SQL procedure successfully completed.
+
+SQL> Ed PRG6.SQL
+
+SQL> @PRG6.SQL
+ 15  /
+Enter value for x: 4
+old   2:  X CHAR(1):='&X';
+new   2:  X CHAR(1):='4';
+THIS IS NOT A LETTER
+THIS IS A NUMBER
+
+PL/SQL procedure successfully completed.
+
+SQL> @PRG6.SQL
+ 15  /
+Enter value for x: T
+old   2:  X CHAR(1):='&X';
+new   2:  X CHAR(1):='T';
+THIS IS A LETTER
+
+PL/SQL procedure successfully completed.
+
+SQL> @PRG6.SQL
+ 15  /
+Enter value for x: >
+old   2:  X CHAR(1):='&X';
+new   2:  X CHAR(1):='>';
+THIS IS NOT A LETTER
+NOT A NUMBER
+
+PL/SQL procedure successfully completed.
+
+SQL> Ed PRG7.SQL
+
+SQL> @PRG7.SQL
+ 14  /
+Enter value for n: 4
+old   2: N NUMBER:=&N;
+new   2: N NUMBER:=4;
+4IS AN EVEN NUMBER
+
+PL/SQL procedure successfully completed.
+
+SQL> @PRG7.SQL
+ 14  /
+Enter value for n: 5
+old   2: N NUMBER:=&N;
+new   2: N NUMBER:=5;
+5IS AN ODD NUMBER
+
+PL/SQL procedure successfully completed.
+
+SQL> Ed PRG8.SQL
+
+SQL> @PRG8.SQL
+ 10  /
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+PL/SQL procedure successfully completed.
+
+SQL> Ed PRG9.SQL
+
+SQL> @PRG9.SQL
+  9  /
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+PL/SQL procedure successfully completed.
+
+SQL> E
+SP2-0042: unknown command "E" - rest of line ignored.
+SQL> Ed PRG10.SQL
+
+SQL> PRG10.SQL
+SP2-0042: unknown command "PRG10.SQL" - rest of line ignored.
+SQL> @PRG10.SQL
+  9  /
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+
+PL/SQL procedure successfully completed.
+
+SQL> Ed PRG11.SQL
+
+SQL> @PRG11.SQL
+  9  /
+Enter value for n: 101
+old   2:  N NUMBER(4):=&N;
+new   2:  N NUMBER(4):=101;
+SELECT ENO,ENAME,SAL INTO N,EN,S FROM EMPLOYEE WHERE ENO=N;
+                                      *
+ERROR at line 6:
+ORA-06550: line 6, column 39:
+PL/SQL: ORA-00942: table or view does not exist
+ORA-06550: line 6, column 1:
+PL/SQL: SQL Statement ignored
+
+
+SQL> ED PRG1.SQL
+
+SQL> ED PRG11.SQL
+
+SQL> CREATE TABLE EMPLOYEE(ENO NUMBER(4),ENAME VARCHAR(20),DGN CHAR(18),SAL NUMBER(6),DEPTNO NUMBER(2));
+
+Table created.
+
+SQL> INSERT INTO EMPLOYEE VALUES(1010,'ALFA','DEVELOPER',25000,12);
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES(1011,'ALEENA','TESTER',35000,13);
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES(1012,'RINI','TESTER',30000,14);
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES(1013,'SREE','MANAGER',100000,15);
+
+1 row created.
+
+SQL> @PRG11.SQL
+  9  /
+Enter value for n: 1010
+old   2:  N NUMBER(4):=&N;
+new   2:  N NUMBER(4):=1010;
+1010ALFA 25000
+
+PL/SQL procedure successfully completed.
+
+SQL> @PRG1.SQL
+  9  /
+Sum is 35
+
+PL/SQL procedure successfully completed.
+
+SQL> ED PRG1.SQL
+
+SQL> ED PRG2.SQL
+
+SQL> ED PRG3.SQL
+
+SQL> ED PRG4.SQL
+
+SQL> ED PRG5.SQL
+
+SQL> ED PRG6.SQL
+
+SQL> ED PRG7.SQL
+
+SQL> ED PRG8.SQL
+
+SQL> ED PRG9.SQL
+
+SQL> ED PRG10.SQL
+
+SQL> ED PRG11.SQL
+
+SQL> ED PRG1.SQL
+
+SQL> @prg1.sql
+  9  /
+Sum is 35
+
+PL/SQL procedure successfully completed.
+
+SQL> ED PRG2.SQL
