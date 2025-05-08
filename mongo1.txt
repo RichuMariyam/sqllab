@@ -1,0 +1,319 @@
+Microsoft Windows [Version 10.0.19045.5737]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\MCETCSE>mongo
+MongoDB shell version v5.0.3
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("4c7fd98d-0b2f-45c0-a4ea-8cf5c08abe7a") }
+MongoDB server version: 5.0.3
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+We recommend you begin using "mongosh".
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2025-04-28T07:40:17.183+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> use INVOICE
+switched to db INVOICE
+> db.createCollection("PRODUCT")
+{
+        "ok" : 0,
+        "errmsg" : "db already exists with different case already have: [invoice] trying to create [INVOICE]",
+        "code" : 13297,
+        "codeName" : "DatabaseDifferCase"
+}
+> db.createCollection("CUSTOMER")
+{
+        "ok" : 0,
+        "errmsg" : "db already exists with different case already have: [invoice] trying to create [INVOICE]",
+        "code" : 13297,
+        "codeName" : "DatabaseDifferCase"
+}
+> db.CUSTOMER.insertOne({name:"Anju",address:"Anju Bhavan",city:"Malapuram",age:"40",phno:"123456789"})
+WriteError({
+        "index" : 0,
+        "code" : 13297,
+        "errmsg" : "db already exists with different case already have: [invoice] trying to create [INVOICE]",
+        "op" : {
+                "_id" : ObjectId("681c284645529c245ad22b36"),
+                "name" : "Anju",
+                "address" : "Anju Bhavan",
+                "city" : "Malapuram",
+                "age" : "40",
+                "phno" : "123456789"
+        }
+}) :
+WriteError({
+        "index" : 0,
+        "code" : 13297,
+        "errmsg" : "db already exists with different case already have: [invoice] trying to create [INVOICE]",
+        "op" : {
+                "_id" : ObjectId("681c284645529c245ad22b36"),
+                "name" : "Anju",
+                "address" : "Anju Bhavan",
+                "city" : "Malapuram",
+                "age" : "40",
+                "phno" : "123456789"
+        }
+})
+WriteError@src/mongo/shell/bulk_api.js:465:48
+mergeBatchResults@src/mongo/shell/bulk_api.js:871:49
+executeBatch@src/mongo/shell/bulk_api.js:940:13
+Bulk/this.execute@src/mongo/shell/bulk_api.js:1182:21
+DBCollection.prototype.insertOne@src/mongo/shell/crud_api.js:264:9
+@(shell):1:1
+> db.CUSTOMER.find()
+>
+> db.CUSTOMER.insertOne({name:"Anju",address:"Anju Bhavan",city:"Malapuram",age:"40",phno:"123456789"})
+WriteError({
+        "index" : 0,
+        "code" : 13297,
+        "errmsg" : "db already exists with different case already have: [invoice] trying to create [INVOICE]",
+        "op" : {
+                "_id" : ObjectId("681c288245529c245ad22b37"),
+                "name" : "Anju",
+                "address" : "Anju Bhavan",
+                "city" : "Malapuram",
+                "age" : "40",
+                "phno" : "123456789"
+        }
+}) :
+WriteError({
+        "index" : 0,
+        "code" : 13297,
+        "errmsg" : "db already exists with different case already have: [invoice] trying to create [INVOICE]",
+        "op" : {
+                "_id" : ObjectId("681c288245529c245ad22b37"),
+                "name" : "Anju",
+                "address" : "Anju Bhavan",
+                "city" : "Malapuram",
+                "age" : "40",
+                "phno" : "123456789"
+        }
+})
+WriteError@src/mongo/shell/bulk_api.js:465:48
+mergeBatchResults@src/mongo/shell/bulk_api.js:871:49
+executeBatch@src/mongo/shell/bulk_api.js:940:13
+Bulk/this.execute@src/mongo/shell/bulk_api.js:1182:21
+DBCollection.prototype.insertOne@src/mongo/shell/crud_api.js:264:9
+@(shell):1:1
+> use HELLO
+switched to db HELLO
+> db.createCollection("CUSTOMER")
+{ "ok" : 1 }
+> db.CUSTOMER.insertOne({name:"Anju",adrress:"Anju Bhavan",city:"Malapuram",age:"40",phno:"2345567890"})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("681c299a45529c245ad22b38")
+}
+> db.
+...
+...
+>
+> db.CUSTOMER.find()
+{ "_id" : ObjectId("681c299a45529c245ad22b38"), "name" : "Anju", "adrress" : "Anju Bhavan", "city" : "Malapuram", "age" : "40", "phno" : "2345567890" }
+> db.CUSTOMER.find().pretty()
+{
+        "_id" : ObjectId("681c299a45529c245ad22b38"),
+        "name" : "Anju",
+        "adrress" : "Anju Bhavan",
+        "city" : "Malapuram",
+        "age" : "40",
+        "phno" : "2345567890"
+}
+> db.CUSTOMER.insertMany([{name:"Richu",addrres:"Sunu Bhavan",city:"Pathanapuram",age:"24",phno:"2545676576687"},{name:"Sneha",address:"Sneha Bhavan",city:"Patharam",age:"22",phno:"57675657687"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("681c2b4d45529c245ad22b39"),
+                ObjectId("681c2b4d45529c245ad22b3a")
+        ]
+}
+> db.CUSTOMER.find().pretty()
+{
+        "_id" : ObjectId("681c299a45529c245ad22b38"),
+        "name" : "Anju",
+        "adrress" : "Anju Bhavan",
+        "city" : "Malapuram",
+        "age" : "40",
+        "phno" : "2345567890"
+}
+{
+        "_id" : ObjectId("681c2b4d45529c245ad22b39"),
+        "name" : "Richu",
+        "addrres" : "Sunu Bhavan",
+        "city" : "Pathanapuram",
+        "age" : "24",
+        "phno" : "2545676576687"
+}
+{
+        "_id" : ObjectId("681c2b4d45529c245ad22b3a"),
+        "name" : "Sneha",
+        "address" : "Sneha Bhavan",
+        "city" : "Patharam",
+        "age" : "22",
+        "phno" : "57675657687"
+}
+> db.CUSTOMER.updateOne({"city":"Malapuram"},{$set:{"city":"Kochi"})
+...
+...
+> db.CUSTOMER.updateOne({"city":"Malapuram"},{$set:{"city":"kochi"}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.CUSTOMER.find().pretty()
+{
+        "_id" : ObjectId("681c299a45529c245ad22b38"),
+        "name" : "Anju",
+        "adrress" : "Anju Bhavan",
+        "city" : "kochi",
+        "age" : "40",
+        "phno" : "2345567890"
+}
+{
+        "_id" : ObjectId("681c2b4d45529c245ad22b39"),
+        "name" : "Richu",
+        "addrres" : "Sunu Bhavan",
+        "city" : "Pathanapuram",
+        "age" : "24",
+        "phno" : "2545676576687"
+}
+{
+        "_id" : ObjectId("681c2b4d45529c245ad22b3a"),
+        "name" : "Sneha",
+        "address" : "Sneha Bhavan",
+        "city" : "Patharam",
+        "age" : "22",
+        "phno" : "57675657687"
+}
+> db.CUSTOMER.deleteOne({"city":"Kochi"})
+{ "acknowledged" : true, "deletedCount" : 0 }
+> db.CUSTOMER.find().pretty()
+{
+        "_id" : ObjectId("681c299a45529c245ad22b38"),
+        "name" : "Anju",
+        "adrress" : "Anju Bhavan",
+        "city" : "kochi",
+        "age" : "40",
+        "phno" : "2345567890"
+}
+{
+        "_id" : ObjectId("681c2b4d45529c245ad22b39"),
+        "name" : "Richu",
+        "addrres" : "Sunu Bhavan",
+        "city" : "Pathanapuram",
+        "age" : "24",
+        "phno" : "2545676576687"
+}
+{
+        "_id" : ObjectId("681c2b4d45529c245ad22b3a"),
+        "name" : "Sneha",
+        "address" : "Sneha Bhavan",
+        "city" : "Patharam",
+        "age" : "22",
+        "phno" : "57675657687"
+}
+> db.CUSTOMER.deleteOne({"city":"kochi"})
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.CUSTOMER.find().pretty()
+{
+        "_id" : ObjectId("681c2b4d45529c245ad22b39"),
+        "name" : "Richu",
+        "addrres" : "Sunu Bhavan",
+        "city" : "Pathanapuram",
+        "age" : "24",
+        "phno" : "2545676576687"
+}
+{
+        "_id" : ObjectId("681c2b4d45529c245ad22b3a"),
+        "name" : "Sneha",
+        "address" : "Sneha Bhavan",
+        "city" : "Patharam",
+        "age" : "22",
+        "phno" : "57675657687"
+}
+> db.CUSTOMER.find({$or;[{"city":"Pathanapuram"},{"city":"Patharam"}]}).pretty()
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:21
+> db.CUSTOMER.find({$or:[{"city":"Pathanapuram"},{"city":"Patharam"}]}).pretty()
+{
+        "_id" : ObjectId("681c2b4d45529c245ad22b39"),
+        "name" : "Richu",
+        "addrres" : "Sunu Bhavan",
+        "city" : "Pathanapuram",
+        "age" : "24",
+        "phno" : "2545676576687"
+}
+{
+        "_id" : ObjectId("681c2b4d45529c245ad22b3a"),
+        "name" : "Sneha",
+        "address" : "Sneha Bhavan",
+        "city" : "Patharam",
+        "age" : "22",
+        "phno" : "57675657687"
+}
+> db.CUSTOMER.find({"age:":{$lt:"23"}}).pretty()
+> db.CUSTOMER.find({"age":{$lt:"23"}}).pretty()
+{
+        "_id" : ObjectId("681c2b4d45529c245ad22b3a"),
+        "name" : "Sneha",
+        "address" : "Sneha Bhavan",
+        "city" : "Patharam",
+        "age" : "22",
+        "phno" : "57675657687"
+}
+> db.CUSTOMER.find({"age":{$gte:"23"}}).pretty()
+{
+        "_id" : ObjectId("681c2b4d45529c245ad22b39"),
+        "name" : "Richu",
+        "addrres" : "Sunu Bhavan",
+        "city" : "Pathanapuram",
+        "age" : "24",
+        "phno" : "2545676576687"
+}
+> db.CUSTOMER.find({"city":{$ne:"23"}}).pretty()
+{
+        "_id" : ObjectId("681c2b4d45529c245ad22b39"),
+        "name" : "Richu",
+        "addrres" : "Sunu Bhavan",
+        "city" : "Pathanapuram",
+        "age" : "24",
+        "phno" : "2545676576687"
+}
+{
+        "_id" : ObjectId("681c2b4d45529c245ad22b3a"),
+        "name" : "Sneha",
+        "address" : "Sneha Bhavan",
+        "city" : "Patharam",
+        "age" : "22",
+        "phno" : "57675657687"
+}
+> db.CUSTOMER.find({$nor;[{"city":"Pathanapuram"},{"city":"Patharam"}]}).pretty()
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:22
+> db.CUSTOMER.find({$nor:[{"city":"Pathanapuram"},{"city":"Patharam"}]}).pretty()
+> db.createCollection("PRODUCT")
+{ "ok" : 1 }
+> db.PRODUCT.insertOne({pname:"Pencil",price:"250"})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("681c373545529c245ad22b3b")
+}
+> show collections
+CUSTOMER
+PRODUCT
+>
